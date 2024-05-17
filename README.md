@@ -123,8 +123,8 @@ You can deploy this application on Azure Container Instances for a scalable and 
 - [OpenCV](https://opencv.org/)
 - [Flask](https://flask.palletsprojects.com/)
 - [Docker Hub](https://hub.docker.com/)
-- [Azure Container Instances](https://portal.azure.com/?Microsoft_Azure_Education_correlationId=f0b76ab0-8be0-44ad-9d52-c5704eea7aa7&Microsoft_Azure_Education_newA4E=true&Microsoft_Azure_Education_asoSubGuid=fe76bd71-fe1a-48cf-8706-d254b1b72804#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerInstance%2FcontainerGroups)
-- [Container Tutorial](https://youtu.be/52QUdJIGdLQ?si=9e9BsYJURBmJnTeZ)
+- [Azure Container Instances](https://learn.microsoft.com/en-us/azure/container-instances/)
+- [Containers Tutorial](https://youtu.be/52QUdJIGdLQ?si=9e9BsYJURBmJnTeZ)
 
 ## Contributing
 
