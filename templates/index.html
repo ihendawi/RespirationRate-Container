@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Processing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        #output {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .output-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Video for Processing</h1>
+        <input type="file" id="fileInput" accept="video/*">
+        <button class="btn" onclick="uploadVideo()">Upload and Process</button>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function uploadVideo() {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length === 0) {
+                alert('Please select a video file first.');
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('file', file);
+
+            fetch('/process_video', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('output').innerText = 'Error: ' + data.error;
+                } else {
+                    displayOutput(data);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('output').innerText = 'An error occurred. Please try again.';
+            });
+        }
+
+        function displayOutput(data) {
+            const output = document.getElementById('output');
+            output.innerHTML = `
+                <div class="output-item"><strong>Frames per second:</strong> ${data['Frames per second']}</div>
+                <div class="output-item"><strong>Total number of frames:</strong> ${data['Total number of frames']}</div>
+                <div class="output-item"><strong>Respiration Times:</strong> ${data['Respiration Times']}</div>
+                <div class="output-item"><strong>Time Length:</strong> ${data['Time Lenght']} seconds</div>
+                <div class="output-item"><strong>Respiration Rate (RR):</strong> ${data['RR']} breaths per minute</div>
+            `;
+        }
+    </script>
+</body>
+</html>

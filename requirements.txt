@@ -1,0 +1,5 @@
+Flask==3.0.3
+dlib==19.24.4
+opencv-python
+numpy
+scipy
