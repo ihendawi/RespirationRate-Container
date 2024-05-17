@@ -128,10 +128,16 @@ You can deploy this application on Azure Container Instances for a scalable and 
 
 
 ## ScreenShots from The app
+
 while Uploading
+
+
 ![Screenshot from 2024-05-18 01-21-59](https://github.com/Ibrahim-Hendawi/RespirationRate-Container/assets/93008566/ffb2e8bc-b188-4da2-8308-0696d9be7ef5)
 
+
 The results
+
+
 ![Screenshot from 2024-05-18 01-23-36](https://github.com/Ibrahim-Hendawi/RespirationRate-Container/assets/93008566/5c15c464-f5ac-4a18-8d8d-8927df4b3779)
 
 
