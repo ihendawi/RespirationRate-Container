@@ -129,4 +129,4 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 
 ## Contact
 
-For any questions or inquiries, please contact [ibrahimhen846@ygmail.com](mailto:ibrahimhen846@gmail.com).
+For any questions or inquiries, please contact [ibrahimhen846@gmail.com](mailto:ibrahimhen846@gmail.com).
