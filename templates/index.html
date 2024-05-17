@@ -32,6 +32,22 @@
         .output-item {
             margin-bottom: 10px;
         }
+        #progressContainer {
+            margin-top: 20px;
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 4px;
+            overflow: hidden;
+            display: none;
+        }
+        #progressBar {
+            width: 0;
+            height: 20px;
+            background-color: #4CAF50;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -39,6 +55,9 @@
         <h1>Upload Video for Processing</h1>
         <input type="file" id="fileInput" accept="video/*">
         <button class="btn" onclick="uploadVideo()">Upload and Process</button>
+        <div id="progressContainer">
+            <div id="progressBar">0%</div>
+        </div>
         <div id="output"></div>
     </div>
 
@@ -54,22 +73,42 @@
             const formData = new FormData();
             formData.append('file', file);
 
-            fetch('/process_video', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    document.getElementById('output').innerText = 'Error: ' + data.error;
-                } else {
-                    displayOutput(data);
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/process_video', true);
+
+            xhr.upload.onprogress = function(event) {
+                if (event.lengthComputable) {
+                    const percentComplete = (event.loaded / event.total) * 100;
+                    const progressBar = document.getElementById('progressBar');
+                    progressBar.style.width = percentComplete + '%';
+                    progressBar.textContent = Math.floor(percentComplete) + '%';
                 }
-            })
-            .catch(error => {
-                console.error('Error:', error);
+            };
+
+            xhr.onloadstart = function() {
+                document.getElementById('progressContainer').style.display = 'block';
+            };
+
+            xhr.onload = function() {
+                document.getElementById('progressContainer').style.display = 'none';
+                if (xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+                    if (data.error) {
+                        document.getElementById('output').innerText = 'Error: ' + data.error;
+                    } else {
+                        displayOutput(data);
+                    }
+                } else {
+                    document.getElementById('output').innerText = 'An error occurred. Please try again.';
+                }
+            };
+
+            xhr.onerror = function() {
+                document.getElementById('progressContainer').style.display = 'none';
                 document.getElementById('output').innerText = 'An error occurred. Please try again.';
-            });
+            };
+
+            xhr.send(formData);
         }
 
         function displayOutput(data) {
