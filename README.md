@@ -126,6 +126,16 @@ You can deploy this application on Azure Container Instances for a scalable and 
 - [Azure Container Instances](https://learn.microsoft.com/en-us/azure/container-instances/)
 - [Containers Tutorial](https://youtu.be/52QUdJIGdLQ?si=9e9BsYJURBmJnTeZ)
 
+
+## ScreenShots from The app
+while Uploading
+![Screenshot from 2024-05-18 01-21-59](https://github.com/Ibrahim-Hendawi/RespirationRate-Container/assets/93008566/ffb2e8bc-b188-4da2-8308-0696d9be7ef5)
+
+The results
+![Screenshot from 2024-05-18 01-23-36](https://github.com/Ibrahim-Hendawi/RespirationRate-Container/assets/93008566/5c15c464-f5ac-4a18-8d8d-8927df4b3779)
+
+
+
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
@@ -133,3 +143,4 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 ## Contact
 
 For any questions or inquiries, please contact [ibrahimhen846@gmail.com](mailto:ibrahimhen846@gmail.com).
+
